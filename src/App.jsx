@@ -1,24 +1,11 @@
 import React from "react";
 import { Canvas } from "@react-three/fiber";
-import {
-    Box,
-    PresentationControls,
-    ContactShadows,
-    Environment,
-} from "@react-three/drei";
+import { PresentationControls, useGLTF, useTexture } from "@react-three/drei";
 
 function App() {
     return (
-        <Canvas shadows camera={{ position: [0, 0, 10], fov: 25 }}>
+        <Canvas flat shadows camera={{ position: [0, 25, 25], fov: 25 }}>
             <color attach="background" args={["#FFBF77"]} />
-            <ambientLight intensity={0.5} />
-            <spotLight
-                position={[10, 10, 10]}
-                angle={0.15}
-                penumbra={1}
-                shadow-mapSize={2048}
-                castShadow
-            />
             <PresentationControls
                 global
                 config={{ mass: 2, tension: 250 }}
@@ -26,7 +13,7 @@ function App() {
                 polar={[-Math.PI / 3, Math.PI / 3]}
                 azimuth={[-Math.PI / 1.4, Math.PI / 2]}
             >
-                <Box />
+                <Model />
             </PresentationControls>
             {/* <ContactShadows
                 position={[0, -1.4, 0]}
@@ -35,8 +22,28 @@ function App() {
                 blur={3}
                 far={4}
             /> */}
-            <Environment preset="sunset" />
         </Canvas>
+    );
+}
+
+function Model() {
+    const {
+        nodes: { baked, Road_lines },
+    } = useGLTF("./forest-road.glb");
+
+    const bakedTexture = useTexture("./baked.jpg");
+    bakedTexture.flipY = false;
+
+    return (
+        <group>
+            <mesh geometry={baked.geometry}>
+                <meshBasicMaterial map={bakedTexture} />
+            </mesh>
+            <mesh
+                geometry={Road_lines.geometry}
+                position={Road_lines.position}
+            />
+        </group>
     );
 }
 
