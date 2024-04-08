@@ -13,7 +13,7 @@ function App() {
             flat
             shadows
             dpr={[1, 2]}
-            camera={{ position: [0, 55, 65], fov: 10 }}
+            camera={{ position: [0, 50, 65], fov: 10 }}
         >
             <color attach="background" args={["#FFBF77"]} />
             <PresentationControls
