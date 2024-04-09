@@ -6,6 +6,7 @@ import {
     useGLTF,
     useTexture,
 } from "@react-three/drei";
+import Water from "./Water";
 
 function App() {
     return (
@@ -15,6 +16,14 @@ function App() {
             dpr={[1, 2]}
             camera={{ position: [0, 50, 65], fov: 10 }}
         >
+            <ambientLight intensity={0.5} />
+            <spotLight
+                position={[10, 10, 10]}
+                angle={0.15}
+                penumbra={1}
+                shadow-mapSize={2048}
+                castShadow
+            />
             <color attach="background" args={["#FFBF77"]} />
             <PresentationControls
                 global
@@ -24,6 +33,7 @@ function App() {
                 azimuth={[-Math.PI / 1.4, Math.PI / 2]}
             >
                 <Model />
+                <Water />
             </PresentationControls>
             <ContactShadows
                 position={[0, -3.25, 0]}
