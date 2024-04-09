@@ -1,6 +1,6 @@
 import { useFrame } from "@react-three/fiber";
 import React, { useRef } from "react";
-import { Color, DoubleSide, MeshPhongMaterial } from "three";
+import { Color, MeshPhongMaterial } from "three";
 import CustomShaderMaterial from "three-custom-shader-material";
 
 // shaders
@@ -22,20 +22,21 @@ export default function Water() {
         <mesh
             castShadow
             receiveShadow
-            position={[1.5, 0.3, 1.7]}
+            position={[1.55, 0.3, 1.75]}
             rotation-x={-Math.PI / 2}
             rotation-z={Math.PI / 4}
         >
-            <boxGeometry args={[7.8, 1.5, 0.01, 64, 32, 1]} />
+            <boxGeometry args={[7.8, 1.5, 0.01, 20, 10, 1]} />
             <CustomShaderMaterial
                 ref={material}
                 baseMaterial={MeshPhongMaterial}
                 vertexShader={patchShaders(vertexShader)}
                 fragmentShader={fragmentShader}
-                side={DoubleSide}
                 color={"blue"}
-                shininess={1}
-                flatShading={true}
+                shininess={50}
+                opacity={0.7}
+                transparent
+                flatShading
                 uniforms={{
                     uTime: { value: 0 },
                     waterColor: {

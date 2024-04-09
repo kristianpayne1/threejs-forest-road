@@ -15,5 +15,5 @@ vec3 calcColor() {
 }
 
 void main() {
-  csm_DiffuseColor = vec4(waterColor, 1.0);   
+  csm_DiffuseColor = vec4(waterColor, 0.9);   
 }
