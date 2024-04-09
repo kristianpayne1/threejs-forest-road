@@ -14,21 +14,14 @@ function App() {
             flat
             shadows
             dpr={[1, 2]}
-            camera={{ position: [0, 50, 65], fov: 10 }}
+            camera={{ position: [0, 45, 60], fov: 10 }}
         >
-            <ambientLight intensity={0.5} />
-            <spotLight
-                position={[10, 10, 10]}
-                angle={0.15}
-                penumbra={1}
-                shadow-mapSize={2048}
-                castShadow
-            />
+            <ambientLight intensity={0.8} />
             <color attach="background" args={["#FFBF77"]} />
             <PresentationControls
                 global
-                config={{ mass: 2, tension: 250 }}
-                snap={{ mass: 2, tension: 150 }}
+                zoom={0.8}
+                snap
                 polar={[-Math.PI / 4.5, Math.PI / 4.5]}
                 azimuth={[-Math.PI / 1.4, Math.PI / 2]}
             >
