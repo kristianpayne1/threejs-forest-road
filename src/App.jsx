@@ -1,7 +1,7 @@
 import React from "react";
 import { Canvas } from "@react-three/fiber";
 import {
-    Center,
+    Bounds,
     ContactShadows,
     PresentationControls,
     useGLTF,
@@ -26,12 +26,10 @@ function App() {
                 polar={[-Math.PI / 4.5, Math.PI / 4.5]}
                 azimuth={[-Math.PI / 1.4, Math.PI / 2]}
             >
-                <Center>
-                    <group position={[0, 1.5, 0]}>
-                        <Model />
-                        <Water />
-                    </group>
-                </Center>
+                <Bounds fit clip observe margin={1}>
+                    <Model />
+                    <Water />
+                </Bounds>
             </PresentationControls>
             <ContactShadows
                 position={[0, -3.25, 0]}
