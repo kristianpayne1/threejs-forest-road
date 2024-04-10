@@ -1,6 +1,7 @@
 import React from "react";
 import { Canvas } from "@react-three/fiber";
 import {
+    Center,
     ContactShadows,
     PresentationControls,
     useGLTF,
@@ -25,8 +26,12 @@ function App() {
                 polar={[-Math.PI / 4.5, Math.PI / 4.5]}
                 azimuth={[-Math.PI / 1.4, Math.PI / 2]}
             >
-                <Model />
-                <Water />
+                <Center>
+                    <group position={[0, 1, 0]}>
+                        <Model />
+                        <Water />
+                    </group>
+                </Center>
             </PresentationControls>
             <ContactShadows
                 position={[0, -3.25, 0]}
