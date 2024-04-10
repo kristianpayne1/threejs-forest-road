@@ -27,7 +27,7 @@ function App() {
                 azimuth={[-Math.PI / 1.4, Math.PI / 2]}
             >
                 <Center>
-                    <group position={[0, 1, 0]}>
+                    <group position={[0, 1.5, 0]}>
                         <Model />
                         <Water />
                     </group>
