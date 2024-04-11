@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Canvas } from "@react-three/fiber";
 import {
     Bounds,
@@ -8,6 +8,8 @@ import {
     useTexture,
 } from "@react-three/drei";
 import Water from "./Water";
+import useCustomBounds from "./useCustomBounds";
+import { Vector3 } from "three";
 
 function App() {
     return (
@@ -26,7 +28,7 @@ function App() {
                 polar={[-Math.PI / 4.5, Math.PI / 4.5]}
                 azimuth={[-Math.PI / 1.4, Math.PI / 2]}
             >
-                <Bounds fit clip observe margin={1}>
+                <Bounds fit clip margin={1}>
                     <Model />
                     <Water />
                 </Bounds>
@@ -42,6 +44,8 @@ function App() {
 }
 
 function Model() {
+    const ref = useRef();
+
     const {
         nodes: { baked, Road_lines },
     } = useGLTF("./forest-road.glb");
@@ -49,9 +53,14 @@ function Model() {
     const bakedTexture = useTexture("./baked.jpg");
     bakedTexture.flipY = false;
 
+    useCustomBounds({
+        ref,
+        translate: new Vector3(0, -1.5, 0),
+    });
+
     return (
         <group rotation={[0, -Math.PI / 4, 0]}>
-            <mesh geometry={baked.geometry}>
+            <mesh ref={ref} geometry={baked.geometry}>
                 <meshBasicMaterial map={bakedTexture} />
             </mesh>
             <mesh geometry={Road_lines.geometry} position={Road_lines.position}>
