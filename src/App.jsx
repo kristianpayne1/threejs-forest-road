@@ -1,8 +1,9 @@
-import React, { useRef } from "react";
+import React, { Suspense, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
 import {
     Bounds,
     ContactShadows,
+    Loader,
     PresentationControls,
     useGLTF,
     useTexture,
@@ -13,33 +14,38 @@ import { Vector3 } from "three";
 
 function App() {
     return (
-        <Canvas
-            flat
-            shadows
-            dpr={[1, 2]}
-            camera={{ position: [0, 45, 60], fov: 10 }}
-        >
-            <ambientLight intensity={0.8} />
-            <color attach="background" args={["#FFBF77"]} />
-            <PresentationControls
-                global
-                zoom={0.8}
-                snap
-                polar={[-Math.PI / 4.5, Math.PI / 4.5]}
-                azimuth={[-Math.PI / 1.4, Math.PI / 2]}
+        <>
+            <Canvas
+                flat
+                shadows
+                dpr={[1, 2]}
+                camera={{ position: [0, 45, 60], fov: 10 }}
             >
-                <Bounds fit clip margin={1}>
-                    <Model />
-                    <Water />
-                </Bounds>
-            </PresentationControls>
-            <ContactShadows
-                position={[0, -3.25, 0]}
-                scale={20}
-                blur={3}
-                far={4}
-            />
-        </Canvas>
+                <Suspense fallback={null}>
+                    <ambientLight intensity={0.8} />
+                    <PresentationControls
+                        global
+                        zoom={0.8}
+                        snap
+                        polar={[-Math.PI / 4.5, Math.PI / 4.5]}
+                        azimuth={[-Math.PI / 1.4, Math.PI / 2]}
+                    >
+                        <Bounds fit clip margin={1}>
+                            <Model />
+                            <Water />
+                        </Bounds>
+                    </PresentationControls>
+                    <ContactShadows
+                        position={[0, -3.25, 0]}
+                        scale={20}
+                        blur={3}
+                        far={4}
+                    />
+                </Suspense>
+                <color attach="background" args={["#FFBF77"]} />
+            </Canvas>
+            <Loader />
+        </>
     );
 }
 
