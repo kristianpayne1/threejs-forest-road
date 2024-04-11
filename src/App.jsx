@@ -35,7 +35,7 @@ function App() {
                             <Model />
                             <Water />
                             <Sparkles
-                                count={10}
+                                count={5}
                                 rotation={[0, Math.PI / 4, 0]}
                                 position={[-1.5, 2.5, -1]}
                                 size={50}
