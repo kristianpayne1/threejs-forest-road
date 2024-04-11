@@ -1,6 +1,6 @@
 import { useFrame } from "@react-three/fiber";
 import React, { useRef } from "react";
-import { Color, MeshPhysicalMaterial } from "three";
+import { Color, MeshPhongMaterial } from "three";
 import CustomShaderMaterial from "three-custom-shader-material";
 
 // shaders
@@ -27,18 +27,16 @@ export default function Water() {
             rotation-x={-Math.PI / 2}
             rotation-z={Math.PI / 4}
         >
-            <boxGeometry args={[7.8, 1.5, thickness, 50, 10, 1]} />
+            <boxGeometry args={[7.8, 1.5, thickness, 40, 8, 1]} />
             <CustomShaderMaterial
                 ref={material}
-                baseMaterial={MeshPhysicalMaterial}
+                baseMaterial={MeshPhongMaterial}
                 vertexShader={patchShaders(vertexShader)}
                 fragmentShader={fragmentShader}
                 color={new Color("#52a7f7")}
-                roughness={0.25}
-                metalness={0}
-                ior
-                reflectivity={0.5}
                 transparent
+                opacity={0.9}
+                shininess={30}
                 flatShading
                 uniforms={{
                     uTime: { value: 0 },

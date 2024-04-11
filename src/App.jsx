@@ -2,6 +2,7 @@ import React, { Suspense, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
 import {
     Bounds,
+    Box,
     ContactShadows,
     Loader,
     PresentationControls,
@@ -31,6 +32,15 @@ function App() {
                         polar={[-Math.PI / 4.5, Math.PI / 4.5]}
                         azimuth={[-Math.PI / 1.4, Math.PI / 2]}
                     >
+                        <pointLight
+                            position={[0, 5, -6]}
+                            rotation={[Math.PI / 6, 0, 0]}
+                            intensity={100}
+                        />
+                        <Box
+                            position={[0, 5, -6]}
+                            rotation={[Math.PI / 6, 0, 0]}
+                        />
                         <Bounds fit clip margin={1}>
                             <Model />
                             <Water />
