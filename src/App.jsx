@@ -37,10 +37,6 @@ function App() {
                             rotation={[Math.PI / 6, 0, 0]}
                             intensity={100}
                         />
-                        <Box
-                            position={[0, 5, -6]}
-                            rotation={[Math.PI / 6, 0, 0]}
-                        />
                         <Bounds fit clip margin={1}>
                             <Model />
                             <Water />
