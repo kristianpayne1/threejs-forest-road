@@ -1,6 +1,6 @@
 # ThreeJS - Forest Road
 
-![Screenshot 2024-04-09 235437](https://github.com/kristianpayne1/threejs-forest-road/assets/16291096/5c621d00-122a-447f-a45e-c5143bb56796)
+![image](https://github.com/kristianpayne1/threejs-forest-road/assets/16291096/1391f1f7-3b38-47f2-b89b-3c8ff321d50d)
 
 Made with:
 - [React](https://react.dev/)
