@@ -5,12 +5,13 @@ import {
     ContactShadows,
     Loader,
     PresentationControls,
+    Sparkles,
     useGLTF,
     useTexture,
 } from "@react-three/drei";
 import Water from "./Water";
 import useCustomBounds from "./useCustomBounds";
-import { Vector3 } from "three";
+import { Color, Vector3 } from "three";
 
 function App() {
     return (
@@ -33,6 +34,14 @@ function App() {
                         <Bounds fit clip margin={1}>
                             <Model />
                             <Water />
+                            <Sparkles
+                                count={10}
+                                rotation={[0, Math.PI / 4, 0]}
+                                position={[-1.5, 2.5, -1]}
+                                size={50}
+                                opacity={0.8}
+                                scale={[8, 1, 6]}
+                            />
                         </Bounds>
                     </PresentationControls>
                     <ContactShadows
