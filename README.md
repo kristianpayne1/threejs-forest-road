@@ -2,7 +2,7 @@
 
 <p>
     <a href="https://kristianpayne1.github.io/threejs-forest-road">
-        <img width="100%" src="https://github.com/kristianpayne1/threejs-forest-road/assets/16291096/5c621d00-122a-447f-a45e-c5143bb56796" alt="Journey stage 1"/>
+        <img width="100%" src="https://github.com/kristianpayne1/threejs-forest-road/assets/16291096/1391f1f7-3b38-47f2-b89b-3c8ff321d50d" alt="Journey stage 1"/>
     </a>
 </p>
 
